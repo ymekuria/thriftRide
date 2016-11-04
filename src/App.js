@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Button } from './components/common'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
+import { Header } from './components/common';
 
 class App extends Component {
-  state = {
-    pressed: ''
-  }
-  onButtonPress() {
-    
-  }
-
   render() {
     return (
-      <View>
-        <Button onPress={this.onButtonPress.bind(this)}>
-          Hi World
-        </Button>
-      </View>  
-    )
+      <Provider store={createStore(reducers)}>
+        <View>
+          <Header headerText="Hello World" />
+        </View>  
+      </Provider>  
+    );
   }
 }
 
