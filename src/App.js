@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
 import { Header } from './components/common';
+import HomeView from './components/HomeView';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <Provider store={createStore(reducers)}>
         <View>
           <Header headerText="Hello World" />
+          <HomeView />
         </View>  
       </Provider>  
     );
