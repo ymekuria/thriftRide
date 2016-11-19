@@ -42,3 +42,6 @@ android/keystores/debug.keystore
 
 #DEV
 .eslintrc
+
+#CONFIG
+config
