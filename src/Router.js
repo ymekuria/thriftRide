@@ -4,9 +4,8 @@ import TripAddressForm from './components/TripAddressForm';
 
 const RouterComponent = () => {
   return (
-    <Router>
-      <Scene key="TripAddressForm" component={TripAddressForm} title="Where Are You Going" /> 
-
+    <Router sceneStyle={{ paddingTop: 65 }}>
+      <Scene  initial key="TripAddressForm" component={TripAddressForm} title="Where Are You Going" /> 
     </Router>
   );
 }
