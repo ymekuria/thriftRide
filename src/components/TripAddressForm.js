@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { updateCurrentLocation, updateDestination } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class TripAddressForm extends Component {
-  onDestinationChange(text) {
-
-  } 
-
   onCurrentLocationChange(text) {
-
+    this.props.updateCurrentLocation(text);
   }
 
-  onButtonPress() {
+  onDestinationChange(text) {
+    this.props.updateDestination(text);
+  } 
 
+  onButtonPress() {
+    console.log('finding ride matches');
   }
 
   renderButton() {
     if (this.props.loading) {
-      return <Spinner size='large' />
+      return <Spinner size='large' />;
     }
   }
 
   render() {
+    console.log('this.props: ', this.props);
+    const { currentLocation, destination } = this.props;
+
     return (
       <Card>
         <CardSection>
           <Input
             placeholder="From"
             autoCorrect={false}
-            onChangeText={(text)=> this.onCurrentLocationChange.bind(this)}
+            onChangeText={this.onCurrentLocationChange.bind(this)}
+            value={currentLocation}
           />  
         </CardSection>
 
@@ -37,12 +41,13 @@ class TripAddressForm extends Component {
           <Input
             placeholder="To"
             autoCorrect={false}
-            onChangeText={(text)=> console.log(text)}
+            onChangeText={this.onDestinationChange.bind(this)}
+            value={destination}
           />  
         </CardSection>
 
         <CardSection>
-          <Button>
+          <Button onPress={this.onButtonPress.bind(this)}>
             Compare Rides
           </Button>
         </CardSection>  
@@ -51,9 +56,13 @@ class TripAddressForm extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-  
-// }
+const mapStateToProps = state => {
+  const { currentLocation, destination } = state.location;
 
-export default TripAddressForm;
-    
+  return { currentLocation, destination };
+};
+
+export default connect(mapStateToProps, { 
+  updateCurrentLocation, 
+  updateDestination 
+})(TripAddressForm);

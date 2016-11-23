@@ -1,6 +1,6 @@
 import { 
-  UPDATE_CURRENT_LOCATION, 
-  UPDATE_DESTINATION 
+  CURRENT_LOCATION_UPDATE, 
+  DESTINATION_UPDATE 
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -9,11 +9,12 @@ const INITIAL_STATE = {
 };
 
 const LocationReducer = (state = INITIAL_STATE, action) => {
+  console.log('action ', action);
   switch (action.type) {
-    case UPDATE_CURRENT_LOCATION:
-      return { ...state, ...action.payload };
-    case UPDATE_DESTINATION:
-      return { ...state, ...action.payload };
+    case CURRENT_LOCATION_UPDATE:
+      return { ...state, currentLocation: action.payload };
+    case DESTINATION_UPDATE:
+      return { ...state, destination: action.payload };
     default:
       return state;  
   }

@@ -9,7 +9,7 @@ import reducers from './reducers';
 
 class App extends Component {
   componentWillMount() {
-    firebase.initializeApp(config);
+    // firebase.initializeApp(config);
   }
 
   render() {
