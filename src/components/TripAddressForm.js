@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class TripAddressForm extends Component {
+  onDestinationChange(text) {
+
+  } 
+
+  onCurrentLocationChange(text) {
+
+  }
+
+  onButtonPress() {
+
+  }
+
+  renderButton() {
+    if (this.props.loading) {
+      return <Spinner size='large' />
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -11,7 +29,7 @@ class TripAddressForm extends Component {
           <Input
             placeholder="From"
             autoCorrect={false}
-            onChangeText={(text)=> console.log(text)}
+            onChangeText={(text)=> this.onCurrentLocationChange.bind(this)}
           />  
         </CardSection>
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
@@ -10,7 +9,7 @@ import reducers from './reducers';
 
 class App extends Component {
   componentWillMount() {
-    // firebase.initializeApp(config);
+    firebase.initializeApp(config);
   }
 
   render() {
@@ -22,6 +21,6 @@ class App extends Component {
       </Provider>  
     );
   }
-};
+}
 
 export default App;
