@@ -74,7 +74,7 @@ class TripAddressForm extends Component {
             placeholder="To"
             autoCorrect={false}
             onChangeText={this.onDestinationChange.bind(this)}
-            value={destination}
+            value={destination.address}
           />  
         </CardSection>
 
