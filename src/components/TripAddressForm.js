@@ -22,8 +22,9 @@ class TripAddressForm extends Component {
   componentDidMount() {
     // retrieving the current location of the device and storing it in the application state
     navigator.geolocation.getCurrentPosition((position) => {
-        // console.log(position);
-        
+      const { latitude, longitude } = position.coords;
+
+      this.props.setDefaultCurrentLocation(latitude, longitude);        
       },
       (error) => alert(JSON.stringify(error)),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -55,7 +56,6 @@ class TripAddressForm extends Component {
   }
 
   render() {
-    console.log('this.props: ', this.props);
     const { currentLocation, destination } = this.props;
 
     return (
@@ -65,7 +65,7 @@ class TripAddressForm extends Component {
             placeholder="From"
             autoCorrect={false}
             onChangeText={this.onCurrentLocationChange.bind(this)}
-            value={currentLocation}
+            value={currentLocation.address}
           />  
         </CardSection>
 
@@ -88,14 +88,15 @@ class TripAddressForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { currentLocation, destination } = state.location;
+  const { currentLocation, pickupLocation, destination } = state.location;
 
-  return { currentLocation, destination };
+  return { currentLocation, pickupLocation, destination };
 };
 
 
 
-export default connect(mapStateToProps, { 
+export default connect(mapStateToProps, {
+  setDefaultCurrentLocation, 
   updateCurrentLocation, 
   updateDestination,
   fetchRideData 

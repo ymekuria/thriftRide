@@ -14,11 +14,11 @@ class App extends Component {
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
-    
+
     return (
       <Provider store={store}>
         <Router />
-      </Provider>  
+      </Provider>        
     );
   }
 }
