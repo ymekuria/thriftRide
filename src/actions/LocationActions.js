@@ -6,34 +6,40 @@ import {
   DESTINATION_UPDATE 
 } from './types';
 
-export const setDefaultCurrentLocation = (latitude, longitude) => {
+
+const setDefaultCurrentLocation = (latitude, longitude, dispatch) => {
   const url = `${googleMapsUrl}latlng=${latitude},${longitude}&key=${googleMapsKey}`;
-
-  return (dispatch) => {
     //converts device current lat and long location to a formatted address 
-    axios.get(url)
-      .then(response => {
-        const currentLocationObj = {
-          latitude,
-          longitude,
-          address: response.data.results[0].formatted_address 
-        };
+  axios.get(url)
+    .then(response => {
+      const currentLocationObj = {
+        latitude,
+        longitude,
+        address: response.data.results[0].formatted_address 
+      };
 
-        dispatch({ 
-          type: CURRENT_LOCATION_UPDATE, 
-          payload: currentLocationObj
-        });
-      })
-      .catch(error => console.log(error));
-  };  
+      dispatch({ 
+        type: CURRENT_LOCATION_UPDATE, 
+        payload: currentLocationObj
+      });
+    })
+    .catch(error => console.log(error));
 };
 
-export const updateCurrentLocation = (text) => {
-   console.log('outside thunk');
+// getting the device coordinates using the navigator api
+export const getDefaultCurrentLocation = () => {
   return (dispatch) => {
-     console.log('inside thunk');
-    // { type: PICKUP_LOCATION_UPDATE, payload: text };
-  }  
+    const options = { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 };
+    const positionError = (error) => alert(JSON.stringify(error));
+
+    const positionSuccess = (position) => {
+      const { latitude, longitude } = position.coords;
+      // adds the lattitude and longitude to the application state
+      setDefaultCurrentLocation(latitude, longitude, dispatch);        
+    };
+
+    navigator.geolocation.getCurrentPosition(positionSuccess, positionError, options);
+  };
 };
 
 export const updateDestination = (text) => {

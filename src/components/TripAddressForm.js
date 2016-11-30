@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
-import axios from 'axios';
-import { googleMapsKey } from '../config';
 import { 
-  setDefaultCurrentLocation,
+  getDefaultCurrentLocation,
   updateCurrentLocation, 
   updateDestination, 
   fetchRideData 
@@ -21,13 +19,7 @@ import {
 class TripAddressForm extends Component {
   componentDidMount() {
     // retrieving the current location of the device and storing it in the application state
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      this.props.setDefaultCurrentLocation(latitude, longitude);        
-      },
-      (error) => alert(JSON.stringify(error)),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );     
+    this.props.getDefaultCurrentLocation();
   }
 
   onCurrentLocationChange(text) {
@@ -95,8 +87,8 @@ const mapStateToProps = state => {
 
 
 export default connect(mapStateToProps, {
-  setDefaultCurrentLocation, 
-  updateCurrentLocation, 
+  getDefaultCurrentLocation,
+  updateCurrentLocation,
   updateDestination,
   fetchRideData 
 })(TripAddressForm);
