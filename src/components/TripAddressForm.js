@@ -23,7 +23,6 @@ class TripAddressForm extends Component {
     // retrieving the current location of the device and storing it in the application state
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-
       this.props.setDefaultCurrentLocation(latitude, longitude);        
       },
       (error) => alert(JSON.stringify(error)),

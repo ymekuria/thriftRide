@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { googleMapsKey } from '../config';
+import { googleMapsUrl, googleMapsKey } from '../config';
 import { 
   CURRENT_LOCATION_UPDATE,
   PICKUP_LOCATION_UPDATE, 
@@ -7,7 +7,7 @@ import {
 } from './types';
 
 export const setDefaultCurrentLocation = (latitude, longitude) => {
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=37.785834,-122.406417&key=${googleMapsKey}`;
+  const url = `${googleMapsUrl}latlng=${latitude},${longitude}&key=${googleMapsKey}`;
 
   return (dispatch) => {
     //converts device current lat and long location to a formatted address 
