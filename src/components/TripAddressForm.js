@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import MapView from 'react-native-maps';
+import axios from 'axios';
 import { 
   getDefaultCurrentLocation,
   updateCurrentLocation, 
-  updateDestination, 
+  updateDestination,
+  setDestination, 
   fetchRideData 
 } from '../actions';
 import { 
@@ -31,7 +32,12 @@ class TripAddressForm extends Component {
   } 
 
   onButtonPress() {
-    // // this.props.fetchRideData();
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=2326+Fulton+St,CA&key=AIzaSyBwQJUuR2Jj31WbxuTegm8qwFZ2wgfo0GU`
+    axios.get(url)
+        .then(response => {
+          console.log('response: ', response);
+        })
+        .catch(error => console.log(error));
   }
 
   renderButton() {
@@ -90,5 +96,6 @@ export default connect(mapStateToProps, {
   getDefaultCurrentLocation,
   updateCurrentLocation,
   updateDestination,
+  setDestination,
   fetchRideData 
 })(TripAddressForm);

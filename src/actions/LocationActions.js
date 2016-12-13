@@ -6,7 +6,7 @@ import {
   DESTINATION_UPDATE 
 } from './types';
 
-
+// dispatches the current location of the device
 const setDefaultCurrentLocation = (latitude, longitude, dispatch) => {
   const url = `${googleMapsUrl}latlng=${latitude},${longitude}&key=${googleMapsKey}`;
     //converts device current lat and long location to a formatted address 
@@ -41,6 +41,10 @@ export const getDefaultCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(positionSuccess, positionError, options);
   };
 };
+
+export const setDestination = () => {
+  
+}
 
 export const updateDestination = (text) => {
   return { type: DESTINATION_UPDATE, payload: text };
