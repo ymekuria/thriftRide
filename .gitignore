@@ -39,4 +39,6 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
-src/config.js
+
+# CONFIG
+./src/config

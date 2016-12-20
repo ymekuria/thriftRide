@@ -7,7 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-@import GooglePlaces;
+@import GooglePlaces; 
 @import GoogleMaps;
 
 #import "AppDelegate.h"
@@ -23,8 +23,8 @@
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
-  [GMSPlacesClient provideAPIKey:@"AIzaSyC8bbBdKgCiF4Ar20rx01MI3DQAoEon9eQ"];
-  [GMSServices provideAPIKey:@"AIzaSyC8bbBdKgCiF4Ar20rx01MI3DQAoEon9eQ"];
+  [GMSPlacesClient provideAPIKey:@"AIzaSyB-9X0g8C8SRezdfETZMcqp8UFdnOstX8A"];
+  [GMSServices provideAPIKey:@"AIzaSyB-9X0g8C8SRezdfETZMcqp8UFdnOstX8A"];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"thriftRide"
