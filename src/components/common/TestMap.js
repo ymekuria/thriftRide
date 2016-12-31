@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 
 import MapView from 'react-native-maps';
 
 class Map extends Component {

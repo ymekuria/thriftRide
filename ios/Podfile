@@ -10,9 +10,4 @@ target 'thriftRide' do
   pod 'GoogleMaps', '2.1'
   pod 'GooglePlacePicker', '2.1' 
 
-  target 'thriftRideTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
