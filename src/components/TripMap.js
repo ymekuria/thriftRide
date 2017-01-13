@@ -4,17 +4,23 @@ import MapView from 'react-native-maps';
 
 let { height, width } = Dimensions.get('window');
 
-class AppleMap extends Component {
-  this.onRegionChange.bind(this);
+class TripMap extends Component {
   
+
   onRegionChange(region) {
     // set region state via redux
   }
+
+  onRegionChangeComplete(region) {
+    // set state of final region upon completion
+  }
+
   render () {
     return (
       <MapView
         style={styles.map}
         showsUserLocation={true}
+        followsUserLocation={true}
         showsCompass
         initialRegion={{
           latitude: 37.78825,
@@ -38,4 +44,4 @@ const styles = {
   }
 }
 
-export default AppleMap;
+export default TripMap;

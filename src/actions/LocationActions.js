@@ -42,6 +42,11 @@ export const getDefaultCurrentLocation = () => {
   };
 };
 
+export const setPickup = ({ latitude, longitude }) => {
+  console.log('lattitude: ',latitude, 'longitude: ', longitude);
+
+}
+
 export const setDestination = () => {
   
 }
