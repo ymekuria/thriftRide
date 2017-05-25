@@ -32,7 +32,7 @@ class TripAddressForm extends Component {
   } 
 
   onButtonPress() {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=2326+Fulton+St,CA&key=AIzaSyBwQJUuR2Jj31WbxuTegm8qwFZ2wgfo0GU`
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=2326+Fulton+St,CA`
     axios.get(url)
         .then(response => {
           console.log('response: ', response);
